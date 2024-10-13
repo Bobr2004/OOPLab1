@@ -21,19 +21,19 @@ public class TaxTask {
         return client;
     }
 
-    private static Taxman initTaxman(String name) {
-        return new Taxman(name);
+    private static TaxList initTaxList() {
+        return new TaxList(
+            0.185f,
+            0.05f,
+            0.185f,
+            0.185f,
+            0.2f);
     }
 
     public static void main(String[] args) {
         Client client = initClient("Oleg");
-        Taxman taxman = initTaxman("Anton");
-        TaxList taxesRates = new TaxList(
-                0.2f,
-                0.2f,
-                0.01f,
-                0.1f,
-                0.01f);
+        Taxman taxman = new Taxman("Anton");
+        TaxList taxesRates = initTaxList();
 
         TaxReport report = taxman.countTax(client, taxesRates);
 
