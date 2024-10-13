@@ -22,6 +22,11 @@ public class Client extends Human {
         super(name);
     }
 
+    @Override
+    public void declareSocialStatus(){
+        System.out.println("My name is " + this.name + " and I am forced to pay taxes😭");
+    }
+
     public void setMainIncome(float mainIncome) {
         this.mainIncome = mainIncome;
     }

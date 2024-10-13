@@ -28,15 +28,27 @@ public class TaxTask {
     public static void main(String[] args) {
         Client client = initClient("Oleg");
         Taxman taxman = initTaxman("Anton");
-        TaxList taxes = new TaxList(
-                0.1f,
-                0.05f,
+        TaxList taxesRates = new TaxList(
+                0.2f,
+                0.2f,
                 0.01f,
                 0.1f,
                 0.01f);
 
-        TaxReport report = taxman.countTax(client, taxes);
+        TaxReport report = taxman.countTax(client, taxesRates);
 
+
+
+        // Polymorphism example
+        System.out.println("-------Polymorphism---------");
+        client.declareSocialStatus();
+        taxman.declareSocialStatus();
+        System.out.println("-----------------------");
+
+
+
+        // Sorting example
+        System.out.println("-------Sorting---------");
         report.displayAsc();
         System.out.println("-----------------------");
         report.displayDesc();

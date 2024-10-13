@@ -10,6 +10,11 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TaxingTests {
+    @Test 
+    public void polymorphismTest(){
+        
+    }
+
     @Test
     public void taxingTest() {
         Client client = new Client("TestOleg");

@@ -9,6 +9,11 @@ public class Taxman extends Human {
         super(name);
     }
 
+    @Override
+    public void declareSocialStatus(){
+        System.out.println("I am the one who legally steals your money🤑😈");
+    }
+
     public TaxReport countTax(Client client, TaxList tax) {
 
         float taxedMainIncome = client.getMainIncome() * tax.mainIncomeTax();
@@ -23,6 +28,8 @@ public class Taxman extends Human {
 
         Map<String,Float> report = new HashMap<>();
 
+        float taxSum = taxedMainIncome + taxedAdditionalIncome + taxedRewards + taxedSalesIncome + taxedForeignTransactionsIncome;
+
         report.put("MainIncomeTax",taxedMainIncome);
         report.put("AdditionalIncomeTax",taxedAdditionalIncome);
         report.put("RewardsTax",taxedRewards);
@@ -31,8 +38,10 @@ public class Taxman extends Human {
         report.put("GiftedIncome",client.getGiftedIncome());
         report.put("ChildrenPrivilegeIncome",client.getChildrenPrivilege());
         report.put("GovernmentRewardsIncome",client.getGovernmentRewards());
+        report.put("TaxSum", taxSum);
 
 
         return new TaxReport(report);
     }
+
 }
