@@ -7,7 +7,7 @@ abstract class Human {
         this.name = name;
     }
 
-    public void declareSocialStatus(){
-        System.out.println("I am a human after all");
+    public String getSocialStatus(){
+        return "I am a human after all";
     }
 }

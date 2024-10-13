@@ -12,7 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TaxingTests {
     @Test 
     public void polymorphismTest(){
+        Client client = new Client("TestOleg");
+
+        Taxman taxman = new Taxman("TestAnton");
+
+        boolean differentSocialStatus = !client.getSocialStatus().equals(taxman.getSocialStatus());
+
         
+        assertTrue(differentSocialStatus);
     }
 
     @Test

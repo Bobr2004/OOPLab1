@@ -41,8 +41,8 @@ public class TaxTask {
 
         // Polymorphism example
         System.out.println("-------Polymorphism---------");
-        client.declareSocialStatus();
-        taxman.declareSocialStatus();
+        System.out.println(client.getSocialStatus());
+        System.out.println(taxman.getSocialStatus());
         System.out.println("-----------------------");
 
 

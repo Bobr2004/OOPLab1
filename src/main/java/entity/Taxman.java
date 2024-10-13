@@ -10,8 +10,8 @@ public class Taxman extends Human {
     }
 
     @Override
-    public void declareSocialStatus(){
-        System.out.println("I am the one who legally steals your money🤑😈");
+    public String getSocialStatus(){
+        return "My name is " + this.name + " and I am the one who legally steals your money🤑😈";
     }
 
     public TaxReport countTax(Client client, TaxList tax) {
