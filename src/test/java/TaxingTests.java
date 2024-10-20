@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TaxingTests {
@@ -45,16 +46,18 @@ public class TaxingTests {
 
         Map<String, Float> report = taxman.countTax(client, taxes).getValues();
 
-        boolean mainTax = (client.getMainIncome() * taxes.mainIncomeTax() == report.get("MainIncomeTax"));
-        boolean additionalTax = (client.getAdditionalIncome() * taxes.additionalIncomeTax() == report.get("AdditionalIncomeTax"));
-        boolean rewardsTax = (client.getRewards() * taxes.rewardsTax() == report.get("RewardsTax"));
-        boolean transactionTax = (client.getForeignTransactionsIncome() * taxes.foreignTransactionsIncomeTax() == report.get("ForeignTransactionsIncomeTax"));
-        boolean salesTax = (client.getSalesIncome() * taxes.salesIncomeTax() == report.get("SalesIncomeTax"));
-        assertTrue(mainTax);
-        assertTrue(additionalTax);
-        assertTrue(rewardsTax);
-        assertTrue(transactionTax);
-        assertTrue(salesTax);
+        Map<String, Float> expectedTaxes = Map.of(
+    "MainIncomeTax", client.getMainIncome() * taxes.mainIncomeTax(),
+    "AdditionalIncomeTax", client.getAdditionalIncome() * taxes.additionalIncomeTax(),
+    "RewardsTax", client.getRewards() * taxes.rewardsTax(),
+    "ForeignTransactionsIncomeTax", client.getForeignTransactionsIncome() * taxes.foreignTransactionsIncomeTax(),
+    "SalesIncomeTax", client.getSalesIncome() * taxes.salesIncomeTax()
+);
+
+expectedTaxes.forEach((taxType, expectedValue) -> {
+    double actualValue = report.get(taxType);
+    assertEquals(expectedValue, actualValue, 0.0001, taxType + " comparison failed."); // Adjust delta if necessary
+});
 
     }
 }

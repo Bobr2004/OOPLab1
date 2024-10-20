@@ -14,7 +14,7 @@ public class TaxReport {
     public void displayAsc(){
         Map<String, Float> valuesSorted = values.entrySet()
                 .stream()
-                .sorted(Map.Entry.comparingByValue())
+                .sorted(Map.Entry.<String, Float>comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
         
                 valuesSorted.forEach((key, value) -> System.out.println(key + " = " + value + " hrn"));
