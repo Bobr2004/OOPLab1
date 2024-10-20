@@ -49,8 +49,8 @@ public class TaxTask {
 
         // Sorting example
         System.out.println("-------Sorting---------");
-        report.displayAsc();
+        report.displayAscending(true);
         System.out.println("-----------------------");
-        report.displayDesc();
+        report.displayAscending(false);
     }
 }
